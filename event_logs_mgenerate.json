@@ -1,0 +1,22 @@
+{
+    "user_id": {
+        "$integer": {
+            "min": 10000,
+            "max": 99999
+        }
+    },
+    "type": {
+        "$choose": {
+            "from": [
+                "login",
+                "click"
+            ]
+        }
+    },
+    "time":{"$date": {"min": "2022-01-01", "max": "2022-10-07"}},
+    "event_data": {
+        "$binary":{
+            "length":100
+        }
+    }
+}

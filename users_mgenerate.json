@@ -1,0 +1,76 @@
+{
+    "profile": {
+        "first_name": "{{chance.first()}}",
+        "middle_initial": "{{chance.letter({'casing':'upper'})}}",
+        "last_name": "{{chance.last()}}",
+        "address": {
+            "street": "{{chance.address()}}",
+            "city": "{{chance.city()}}",
+            "state": "{{chance.state()}}",
+            "zip": "{{chance.zip()}}"
+        },
+        "date_of_birth": {
+            "$date": {
+                "min": "1923-01-01",
+                "max": "2004-01-01"
+            }
+        }
+    },
+    "financial_metrics": {
+        "assets": {
+            "$numberDecimal": {
+                "max": 200000
+            }
+        },
+        "debts": {
+            "$numberDecimal": {
+                "max": 150000
+            }
+        }
+    },
+    "accounts": {
+        "$array": {
+            "of": {
+                "account_id": {
+                    "$integer": {
+                        "min": 100000,
+                        "max": 999999
+                    }
+                },
+                "name": {
+                    "$choose": {
+                        "from":[
+                            "JPMorgan Chase & Co.",
+                            "Bank of America Corp.",
+                            "Wells Fargo & Co.",
+                            "Citigroup Inc.",
+                            "U.S. Bancorp",
+                            "PNC Financial Services Group Inc.",
+                            "Truist Bank",
+                            "Goldman Sachs Group Inc.",
+                            "TD Group US Holdings LLC",
+                            "Capital One Financial Corp.",
+                            "Bank of New York Mellon Corp.",
+                            "State Street Corp.",
+                            "Fifth Third Bank",
+                            "Silicon Valley Bank",
+                            "Morgan Stanley"
+                        ]
+                    }
+                },
+                "value": {
+                    "$numberDecimal": {
+                        "min": -10000,
+                        "max": 10000
+                    }
+                }
+            },
+            "number": {
+                "$integer": {
+                    "min": 1,
+                    "max": 10
+                }
+            }
+        }
+    }
+}
